@@ -12,11 +12,10 @@
             <h1> Investment Calculator</h1>
                 <h5> Enter the details below to see your estimate</h5>
 
-            <form method="POST">
+            <form action="" method="POST">
                 {% csrf_token %}
                 {{ form|crispy }}
-
-                <button class="btn btn-primary" type="submit">Calculate</button>
+                <button class="btn btn-primary" type="submit">Calculate</button>                
             </form>
             <br>
         </div>
@@ -24,12 +23,10 @@
     </div>
 
     <div class="col-4 border">
-        One of two columns
-        <div class="row mt-5">
+        <div class="row t-5">
             <div class="col-12 col-md-6 mx-md-auto">
-    
                 <h1>Investment Results</h1>
-                <h3> After {{ number_of_years }} years, your ivestment is worth ${{ total_result }}</h3>
+                <h3> After {{ number_of_years }} years, your investment is worth ${{ total_result }}</h3>
     
                 <div class="mt-5">
                     <table class="table">
