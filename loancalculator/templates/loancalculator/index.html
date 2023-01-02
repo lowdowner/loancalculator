@@ -7,12 +7,13 @@
 <div class="container">
 <div class="row justify-content-center" style="margin-top: -100px;">
     
-    <div class="col-sm-5 border bg-light">
+    <div class="col-md-4 border bg-light">
 
-        <div class="col-12 col-md-6 mx-md-auto">
-            <h1> Investment Calculator</h1>
-                <h5> Enter the details below to see your estimate</h5>
-
+        <div class="row justify-content-center">
+            <h1 class="text-center"> Car Finance Calculator</h1>
+                <h5 class="text-center"> Enter the details below to see your estimate</h5>
+                </div>
+                <div class="col-md-8 mx-auto">
             <form action="" method="POST">
                 {% csrf_token %}
                 {{ form|crispy }}
@@ -23,11 +24,11 @@
 
     </div>
 
-    <div class="col-sm-5 border bg-white">
-            <div class="col-12 col-md-6 mx-md-auto">
+    <div class="col-sm-4 border bg-white">
+        <div class="row justify-content-center">
                 <h1>Investment Results</h1>
                 <h3> After {{ number_of_years }} years, your investment is worth ${{ total_result }}</h3>
-    
+    </div>
                 <div class="mt-5">
                     <table class="table">
                         <thead>
@@ -55,5 +56,5 @@
       </div>
     </div>  
   </div>
-</div>
+
 {% endblock content %}
