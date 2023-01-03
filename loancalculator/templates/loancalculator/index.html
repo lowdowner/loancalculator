@@ -11,7 +11,7 @@
 
         <div class="row justify-content-center">
             <h1 class="text-center"> Car Finance Calculator</h1>
-                <h5 class="text-center"> Enter the details below to see your estimate</h5>
+                <h5 class="text-center"> Enter details below to see your estimate</h5>
                 </div>
                 <div class="col-md-8 mx-auto">
             <form action="" method="POST">
@@ -26,8 +26,9 @@
 
     <div class="col-sm-4 border bg-white">
         <div class="row justify-content-center">
-                <h1>Investment Results</h1>
-                <h3> After {{ number_of_years }} years, your investment is worth ${{ total_result }}</h3>
+                <h1 class="text-center">Results</h1>
+                <h2> Your estimated payment will be ${{ total_result }} over {{ number_of_years }} months</h2>
+                <!-- <h3> After {{ number_of_years }} years, your investment is worth ${{ total_result }}</h3>-->
     </div>
                 <div class="mt-5">
                     <table class="table">
@@ -40,14 +41,14 @@
                         </thead>
                         <tbody>
     
-                            {% for key, value in yearly_results.items %}
+                            <!-- {% for key, value in yearly_results.items %} -->
     
                             <tr>
-                                <th scope="row">{{ key }}</th>
+                               <!-- <th scope="row">{{ key }}</th>
                                 <td>{{ value.interest }}</td>
                                 <td>{{ value.total }}</td>
                             </tr>
-                            {% endfor %}
+                             {% endfor %} -->
                         </tbody>
                     </table>
                 </div>

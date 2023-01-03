@@ -41,6 +41,19 @@ class Index(View):
                 total_interest = 0
                 yearly_results = {}
 
+                 
+                monthly_repay = int((form.cleaned_data['starting_amount'] / (int(form.cleaned_data['number_of_years'])*12)) + (form.cleaned_data['starting_amount'] / (int(form.cleaned_data['number_of_years'])*12) * 0.07))
+
+                context2 = {
+                        'form':form,
+                        'total_result': monthly_repay
+                        
+                    }
+                return render(request, 'loancalculator/index.html', context2)
+        else:
+            form = InvestmentForm()
+            return render(request, 'loancalculator/index.html', {'form':form})  
+'''             
                 for i in range(1, int(form.cleaned_data['number_of_years'] +1)):
                     yearly_results[i] = {}
 
@@ -56,6 +69,8 @@ class Index(View):
                     yearly_results[i]['interest']  = round(total_interest, 2)
                     yearly_results[i]['total'] = round(total_result,2)
 
+                    # MONTHLY COST
+                    monthly_repay = (form.cleaned_data['starting_amount'] / int(form.cleaned_data['number_of_years'])) + (form.cleaned_data['starting_amount'] * 0.07)
 
                     # CREATE CONTEXT 
                     context = {
@@ -64,16 +79,21 @@ class Index(View):
                         'yearly_results': yearly_results,
                         'number_of_years': int(form.cleaned_data['number_of_years'])
                     }
+
+                 
             
                 # RENDER THE TEMPLATE
 
                 return render(request, 'loancalculator/index.html', context)
 
+        # MONTHLY COST
+                
 
         
         else:
             form = InvestmentForm()
             return render(request, 'loancalculator/index.html', {'form':form})
-        
-            
+
+'''
+         
         
