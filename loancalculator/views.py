@@ -48,7 +48,8 @@ class Index(View):
 
                 context2 = {
                         'form':form,
-                        'total_result': monthly_repay
+                        'total_result': monthly_repay,
+                        'starting_amount': int(form.cleaned_data['starting_amount'])
                         
                     }
                 return render(request, 'loancalculator/index.html', context2)

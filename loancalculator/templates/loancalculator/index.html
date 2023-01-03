@@ -31,6 +31,23 @@
                 <!-- <h3> After {{ number_of_years }} years, your investment is worth ${{ total_result }}</h3>-->
     </div>
                 <div class="mt-5">
+                    <div class="row justify-content-between">
+                        <div class="col-4 text-center">
+                          Car price
+                        </div>
+                        <div class="col-4 text-center">
+                            ${{ starting_amount }}
+                        </div>
+                      </div>
+                      <div class="row justify-content-between">
+                        <div class="col-4">
+                          One of two columns
+                        </div>
+                        <div class="col-4">
+                          One of two columns
+                        </div>
+                      </div>
+                    <!--
                     <table class="table">
                         <thead>
                             <tr>
@@ -40,17 +57,19 @@
                             </tr>
                         </thead>
                         <tbody>
+                            -->
     
-                            <!-- {% for key, value in yearly_results.items %} -->
+                            <!-- {% for key, value in yearly_results.items %} 
     
                             <tr>
-                               <!-- <th scope="row">{{ key }}</th>
+                                <th scope="row">{{ key }}</th>
                                 <td>{{ value.interest }}</td>
                                 <td>{{ value.total }}</td>
                             </tr>
                              {% endfor %} -->
                         </tbody>
                     </table>
+                    
                 </div>
             </div>
 
