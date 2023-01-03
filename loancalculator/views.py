@@ -33,16 +33,18 @@ class Index(View):
                 number_of_years = int(form.cleaned_data['number_of_years'])
                 request.session['number_of_years'] = number_of_years
 
-                return_rate = form.cleaned_data['return_rate']
-                request.session['return_rate'] = return_rate
+                #return_rate = form.cleaned_data['return_rate']
+                #request.session['return_rate'] = return_rate
 
-                annual_additional_contribution = form.cleaned_data['annual_additional_contribution']
-                request.session['annual_additional_contribution'] = annual_additional_contribution
+                #annual_additional_contribution = form.cleaned_data['annual_additional_contribution']
+                #request.session['annual_additional_contribution'] = annual_additional_contribution
                 total_interest = 0
                 yearly_results = {}
 
                  
-                monthly_repay = int((form.cleaned_data['starting_amount'] / (int(form.cleaned_data['number_of_years'])*12)) + (form.cleaned_data['starting_amount'] / (int(form.cleaned_data['number_of_years'])*12) * 0.07))
+                #monthly_repay = int((form.cleaned_data['starting_amount'] / (int(form.cleaned_data['number_of_years'])*12)) + (form.cleaned_data['starting_amount'] / (int(form.cleaned_data['number_of_years'])*12) * 0.07))
+
+                monthly_repay = int(((form.cleaned_data['starting_amount'] * 0.07) / 12) / (1 - (1 + (0.07 / 12))**(- int(form.cleaned_data['number_of_years']*12))))
 
                 context2 = {
                         'form':form,
