@@ -26,27 +26,80 @@
 
     <div class="col-sm-4 border bg-white">
         <div class="row justify-content-center">
-                <h1 class="text-center">Results</h1>
-                <h2> Your estimated payment will be ${{ total_result }} over {{ number_of_years }} months</h2>
+                <h3 class="text-center">Your estimated payment</h3>
+                <h2> ${{ monthly_repay }} over {{ number_of_years }} months</h2>
                 <!-- <h3> After {{ number_of_years }} years, your investment is worth ${{ total_result }}</h3>-->
     </div>
                 <div class="mt-5">
                     <div class="row justify-content-between">
-                        <div class="col-4 text-center">
+                        <div class="col-4 text-left">
                           Car price
                         </div>
-                        <div class="col-4 text-center">
-                            ${{ starting_amount }}
+                        <div class="col-4 text-left">
+                            ${{ starting_amount|floatformat:"g"}}
                         </div>
                       </div>
                       <div class="row justify-content-between">
-                        <div class="col-4">
-                          One of two columns
+                        <div class="col-4 text-left">
+                          Down payment
                         </div>
                         <div class="col-4">
-                          One of two columns
+                          ${{ deposit_amount|floatformat:"g" }}
                         </div>
                       </div>
+                      <div class="row justify-content-between">
+                        <div class="col-4 text-left">
+                          Trade-in value
+                        </div>
+                        <div class="col-4">
+                          ${{ trade_in_value|floatformat:"g" }}
+                        </div>
+                      </div>
+                      <div class="row justify-content-between">
+                        <div class="col-4 text-left">
+                          Sales tax
+                        </div>
+                        <div class="col-4">
+                          $value
+                        </div>
+                      </div>
+                      <br>
+                      <div class="position-relative w-100 top-50 start-0 border-muted border-top"></div>
+                      <br>
+                      <div class="row justify-content-between">
+                        <div class="col-4 text-left fw-bold">
+                          Total loan amount
+                        </div>
+                        <div class="col-4">
+                          ${{ total_loan|floatformat:"g" }}
+                        </div>
+                      </div>
+                      <div class="row justify-content-between">
+                        <div class="col-4 text-left fw-bold">
+                            Total interest paid
+                            (over life of loan)
+                        </div>
+                        <div class="col-4">
+                          $value
+                        </div>
+                      </div>
+                      <div class="row justify-content-between">
+                        <div class="col-4 text-left fw-bold">
+                            Total loan & interest paid
+                        </div>
+                        <div class="col-4">
+                          ${{ total_loan_plus_interest }}
+                        </div>
+                      </div>
+                      <div class="row justify-content-between">
+                        <div class="col-4 text-left fw-bold">
+                            Monthly payment
+                        </div>
+                        <div class="col-4">
+                          ${{ monthly_repay|floatformat:"g" }}
+                        </div>
+                      </div>
+                      <br>
                     <!--
                     <table class="table">
                         <thead>

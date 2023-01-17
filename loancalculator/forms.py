@@ -6,6 +6,6 @@ class InvestmentForm(forms.Form):
     trade_in_value = forms.FloatField()
     number_of_years = forms.FloatField()
     #return_rate = forms.FloatField()
-    length_of_loan = forms.FloatField()
+    #length_of_loan = forms.FloatField()
     #annual_additional_contribution = forms.FloatField()
 
