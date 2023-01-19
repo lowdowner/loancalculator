@@ -23,8 +23,8 @@
         </div>
 
     </div>
-
-    <div class="col-sm-4 border bg-white">
+ <!-- RESULTS TOP -->
+    <div class="col-md-4 border bg-white">
         <div class="row justify-content-center">
                 <h3 class="text-center">Your estimated payment</h3>
                 <h2> ${{ monthly_repay }} over {{ number_of_years }} months</h2>
@@ -44,7 +44,7 @@
                           Down payment
                         </div>
                         <div class="col-4">
-                          ${{ deposit_amount|floatformat:"g" }}
+                          -${{ deposit_amount|floatformat:"g" }}
                         </div>
                       </div>
                       <div class="row justify-content-between">
@@ -52,7 +52,7 @@
                           Trade-in value
                         </div>
                         <div class="col-4">
-                          ${{ trade_in_value|floatformat:"g" }}
+                          -${{ trade_in_value|floatformat:"g" }}
                         </div>
                       </div>
                       <div class="row justify-content-between">
@@ -66,6 +66,7 @@
                       <br>
                       <div class="position-relative w-100 top-50 start-0 border-muted border-top"></div>
                       <br>
+                      <!-- RESULTS BOTTOM -->
                       <div class="row justify-content-between">
                         <div class="col-4 text-left fw-bold">
                           Total loan amount
@@ -80,7 +81,7 @@
                             (over life of loan)
                         </div>
                         <div class="col-4">
-                          $value
+                          ${{ total_interest|floatformat:"g" }}
                         </div>
                       </div>
                       <div class="row justify-content-between">
@@ -88,7 +89,7 @@
                             Total loan & interest paid
                         </div>
                         <div class="col-4">
-                          ${{ total_loan_plus_interest }}
+                          ${{ total_interest_and_loan|floatformat:"g"}}
                         </div>
                       </div>
                       <div class="row justify-content-between">
@@ -120,8 +121,7 @@
                                 <td>{{ value.total }}</td>
                             </tr>
                              {% endfor %} -->
-                        </tbody>
-                    </table>
+
                     
                 </div>
             </div>
