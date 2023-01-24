@@ -44,18 +44,21 @@ class Index(View):
                  
                 #monthly_repay = int((form.cleaned_data['starting_amount'] / (int(form.cleaned_data['number_of_years'])*12)) + (form.cleaned_data['starting_amount'] / (int(form.cleaned_data['number_of_years'])*12) * 0.07))
 
-                monthly_repay = int((((form.cleaned_data['starting_amount'] - form.cleaned_data['deposit_amount'] - form.cleaned_data['trade_in_value']) * 0.07) / 12) / (1 - (1 + (0.07 / 12))**(- int(form.cleaned_data['number_of_years']*12))))
+                monthly_repay = int((((int(form.cleaned_data['starting_amount']) - form.cleaned_data['deposit_amount'] - form.cleaned_data['trade_in_value']) * 0.07) / 12) / (1 - (1 + (0.07 / 12))**(- int(form.cleaned_data['number_of_years']*12))))
 
-                total_loan = int(form.cleaned_data['starting_amount'] - form.cleaned_data['deposit_amount'] - form.cleaned_data['trade_in_value'])
+                total_loan = int(int(form.cleaned_data['starting_amount']) - form.cleaned_data['deposit_amount'] - form.cleaned_data['trade_in_value'])
 
                 #total_loan_plus_interest = int((((form.cleaned_data['starting_amount'] - form.cleaned_data['deposit_amount'] - form.cleaned_data['trade_in_value']) * 0.07) / 12) / (1 - (1 + (0.07 / 12))**(- int(form.cleaned_data['number_of_years']))))
 
-                total_interest_and_loan = monthly_repay * (form.cleaned_data['number_of_years']*12)
+                total_interest_and_loan = monthly_repay * int(form.cleaned_data['number_of_years']*12)
 
                 total_interest = total_interest_and_loan - total_loan
 
+                number_of_payments = int(form.cleaned_data['number_of_years'])*12
+
                 context2 = {
                         'form':form,
+                        'number_of_payments': number_of_payments,
                         'monthly_repay': monthly_repay,
                         'starting_amount': int(form.cleaned_data['starting_amount']),
                         'deposit_amount': int(form.cleaned_data['deposit_amount']),
