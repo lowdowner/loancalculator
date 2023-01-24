@@ -17,6 +17,10 @@
             <form action="" method="POST">
                 {% csrf_token %}
                 {{ form|crispy }}
+                <button type="button" class="btn btn-outline-primary">3</button>
+                <button type="button" class="btn btn-outline-primary">5</button>
+                <button type="button" class="btn btn-outline-primary">7</button>
+                <br>
                 <button class="btn btn-primary" type="submit">Calculate</button>                
             </form>
             <br>
@@ -27,7 +31,7 @@
     <div class="col-md-4 border bg-white">
         <div class="row justify-content-center">
                 <h3 class="text-center">Your estimated payment</h3>
-                <h2> ${{ monthly_repay }} over {{ number_of_years }} months</h2>
+                <h2> ${{ monthly_repay }} over {{ number_of_months }} months</h2>
                 <!-- <h3> After {{ number_of_years }} years, your investment is worth ${{ total_result }}</h3>-->
     </div>
                 <div class="mt-5">
@@ -98,6 +102,14 @@
                         </div>
                         <div class="col-4">
                           ${{ monthly_repay|floatformat:"g" }}
+                        </div>
+                      </div>
+                      <div class="row justify-content-between">
+                        <div class="col-4 text-left fw-bold">
+                            Number of Payments
+                        </div>
+                        <div class="col-4">
+                          {{ number_of_payments|floatformat:"g" }}
                         </div>
                       </div>
                       <br>
