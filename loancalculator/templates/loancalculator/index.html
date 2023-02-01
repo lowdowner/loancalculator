@@ -60,12 +60,14 @@
                         </div>
                       </div>
                       <div class="row justify-content-between">
-                        <div class="col-4 text-left">
-                          Sales tax
+                        <div class="col-4 text-left"> 
+                          Estimated sales tax
                         </div>
+                        {% for item in sales_tax %}
                         <div class="col-4">
-                          $value
+                          {{ item.combinedrate }}
                         </div>
+                        {% endfor %}
                       </div>
                       <br>
                       <div class="position-relative w-100 top-50 start-0 border-muted border-top"></div>

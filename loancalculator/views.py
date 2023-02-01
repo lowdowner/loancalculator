@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.views import View
 from .forms import InvestmentForm
+from .models import StateTax
 
 
 class Index(View):
@@ -56,6 +57,9 @@ class Index(View):
 
                 number_of_payments = int(form.cleaned_data['number_of_years'])*12
 
+                sales_tax = StateTax.objects.filter(id=90001, specialrate=36200.0).values('combinedrate')  
+ 
+
                 context2 = {
                         'form':form,
                         'number_of_payments': number_of_payments,
@@ -66,7 +70,8 @@ class Index(View):
                         'total_loan': total_loan,
                         #'total_loan_plus_interest': total_loan_plus_interest,
                         'total_interest_and_loan': total_interest_and_loan,
-                        'total_interest': total_interest
+                        'total_interest': total_interest,
+                        'sales_tax': sales_tax
                         
                     }
                 return render(request, 'loancalculator/index.html', context2)
