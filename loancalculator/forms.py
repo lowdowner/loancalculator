@@ -1,4 +1,5 @@
 from django import forms
+from .models import StateTax
 
 STATES = (
     ('', 'Choose...'),
@@ -98,7 +99,13 @@ class InvestmentForm(forms.Form):
     deposit_amount = forms.FloatField()
     trade_in_value = forms.FloatField()
     number_of_years = forms.FloatField()
-    state = forms.ChoiceField(choices=STATES)
+    #state = forms.ChoiceField(choices=STATES)
+    #state = forms.ModelChoiceField(queryset=StateTax.zipcode(), empty_label=None)
+    #state = forms.ChoiceField(queryset=StateTax.objects.values_list('zipcode', flat=True).distinct())
+    state = forms.ChoiceField(
+        label='State',
+        choices=[(zipcode, zipcode) for zipcode in StateTax.objects.values_list('zipcode', flat=True).distinct()]
+    )
     #return_rate = forms.FloatField()
     #length_of_loan = forms.FloatField()
     #annual_additional_contribution = forms.FloatField()

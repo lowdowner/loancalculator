@@ -57,8 +57,19 @@ class Index(View):
 
                 number_of_payments = int(form.cleaned_data['number_of_years'])*12
 
-                sales_tax = StateTax.objects.filter(id=90001, specialrate=36200.0).values('combinedrate')  
+                #sales_tax = StateTax.objects.filter(id=90001, specialrate=36200.0).values('combinedrate')  
  
+                state = form.cleaned_data['state']
+
+                #sales_tax = StateTax.objects.filter(zipcode=state).distinct().get()
+
+                #sales_tax = StateTax.objects.filter(zipcode=state)
+                #if sales_tax:
+                #    state_tax = StateTax.combinedrate
+                #else:
+                #    'no_rate'
+
+                sales_tax = StateTax.objects.filter(zipcode=state).values('combinedrate').distinct()
 
                 context2 = {
                         'form':form,
@@ -71,6 +82,7 @@ class Index(View):
                         #'total_loan_plus_interest': total_loan_plus_interest,
                         'total_interest_and_loan': total_interest_and_loan,
                         'total_interest': total_interest,
+                        'state': state,
                         'sales_tax': sales_tax
                         
                     }
