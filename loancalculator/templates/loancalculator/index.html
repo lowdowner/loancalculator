@@ -17,9 +17,6 @@
             <form action="" method="POST">
                 {% csrf_token %}
                 {{ form|crispy }}
-                <button type="button" class="btn btn-outline-primary">3</button>
-                <button type="button" class="btn btn-outline-primary">5</button>
-                <button type="button" class="btn btn-outline-primary">7</button>
                 <br>
                 <button class="btn btn-primary" type="submit">Calculate</button>                
             </form>
@@ -61,11 +58,11 @@
                       </div>
                       <div class="row justify-content-between">
                         <div class="col-4 text-left"> 
-                          Estimated sales tax
+                          Estimated sales tax ({{ sales_tax.combinedrate }}%)
                         </div>
                         {% for item in sales_tax %}
                         <div class="col-4">
-                          {{ state  }} {{ item.combinedrate }}
+                         +${{ tax_amount|floatformat:"g" }} 
                         </div>
                         {% endfor %}
                       </div>
@@ -143,5 +140,7 @@
       </div>
     </div>  
   </div>
+
+
 
 {% endblock content %}

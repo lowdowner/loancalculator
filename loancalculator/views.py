@@ -42,12 +42,32 @@ class Index(View):
                 total_interest = 0
                 yearly_results = {}
 
-                 
+                state = form.cleaned_data['state']
+
+                #sales_tax = StateTax.objects.filter(zipcode=state).values_list('combinedrate', flat=True).distinct().first()
+
+                ### WORKING ###
+                #sales_tax = StateTax.objects.filter(zipcode=state).values('combinedrate').distinct()
+
+                sales_tax = StateTax.objects.filter(zipcode=state).values('combinedrate')[0]
+                tax_rate = float(sales_tax['combinedrate'])
+                tax_amount = int(int(total_result) * (tax_rate/100))
+                
+
+                #sales_tax_amount = [int(form.cleaned_data['starting_amount']) * sales_tax for sales_tax in sales_tax] 
+
+                #state_tax = StateTax.objects.filter(zipcode=state).values('combinedrate').distinct().first()
+                #sales_tax = float(state_tax['combinedrate'])
+
+                #sales_tax_perc = float(sales_tax)
+
+                #sales_tax_amount =  (sales_tax_perc/100) * int(form.cleaned_data['starting_amount'])
+
                 #monthly_repay = int((form.cleaned_data['starting_amount'] / (int(form.cleaned_data['number_of_years'])*12)) + (form.cleaned_data['starting_amount'] / (int(form.cleaned_data['number_of_years'])*12) * 0.07))
 
-                monthly_repay = int((((int(form.cleaned_data['starting_amount']) - form.cleaned_data['deposit_amount'] - form.cleaned_data['trade_in_value']) * 0.07) / 12) / (1 - (1 + (0.07 / 12))**(- int(form.cleaned_data['number_of_years']*12))))
+                monthly_repay = int((((int(form.cleaned_data['starting_amount']) - form.cleaned_data['deposit_amount'] - form.cleaned_data['trade_in_value'] +tax_amount) * 0.07) / 12) / (1 - (1 + (0.07 / 12))**(- int(form.cleaned_data['number_of_years']*12))))
 
-                total_loan = int(int(form.cleaned_data['starting_amount']) - form.cleaned_data['deposit_amount'] - form.cleaned_data['trade_in_value'])
+                total_loan = int(int(form.cleaned_data['starting_amount']) - form.cleaned_data['deposit_amount'] - form.cleaned_data['trade_in_value'] + tax_amount)
 
                 #total_loan_plus_interest = int((((form.cleaned_data['starting_amount'] - form.cleaned_data['deposit_amount'] - form.cleaned_data['trade_in_value']) * 0.07) / 12) / (1 - (1 + (0.07 / 12))**(- int(form.cleaned_data['number_of_years']))))
 
@@ -59,7 +79,7 @@ class Index(View):
 
                 #sales_tax = StateTax.objects.filter(id=90001, specialrate=36200.0).values('combinedrate')  
  
-                state = form.cleaned_data['state']
+                
 
                 #sales_tax = StateTax.objects.filter(zipcode=state).distinct().get()
 
@@ -69,7 +89,7 @@ class Index(View):
                 #else:
                 #    'no_rate'
 
-                sales_tax = StateTax.objects.filter(zipcode=state).values('combinedrate').distinct()
+                
 
                 context2 = {
                         'form':form,
@@ -83,7 +103,10 @@ class Index(View):
                         'total_interest_and_loan': total_interest_and_loan,
                         'total_interest': total_interest,
                         'state': state,
-                        'sales_tax': sales_tax
+                        'sales_tax': sales_tax,
+                        #'sales_tax_perc' : sales_tax_perc,
+                        #'sales_tax_amount' :sales_tax_amount
+                        'tax_amount': tax_amount
                         
                     }
                 return render(request, 'loancalculator/index.html', context2)
