@@ -93,12 +93,24 @@ STARTING_AMOUNT = (
     (150000, '$150,000'),
 )
 
+
+CREDIT_SCORE = (
+    ('', 'SELECT A VALUE'),
+    (15000, 'Super Prime (781-850)'),
+    (15000, 'Prime (661-780)'),
+    (15000, 'Nonprime (601-660)'),
+    (15000, 'Subprime (501-600)'),
+    (15000, 'Deep Subprime (300-500)'),
+   
+)
+
 class InvestmentForm(forms.Form):
     #starting_amount = forms.FloatField()
     starting_amount = forms.ChoiceField(choices=STARTING_AMOUNT)
     deposit_amount = forms.FloatField()
     trade_in_value = forms.FloatField()
     number_of_years = forms.FloatField()
+    credit_score = forms.ChoiceField(choices=CREDIT_SCORE)
     #state = forms.ChoiceField(choices=STATES)
     #state = forms.ModelChoiceField(queryset=StateTax.zipcode(), empty_label=None)
     #state = forms.ChoiceField(queryset=StateTax.objects.values_list('zipcode', flat=True).distinct())
@@ -106,6 +118,9 @@ class InvestmentForm(forms.Form):
         label='State',
         choices=[(zipcode, zipcode) for zipcode in StateTax.objects.values_list('zipcode', flat=True).distinct()]
     )
+
+
+
     #return_rate = forms.FloatField()
     #length_of_loan = forms.FloatField()
     #annual_additional_contribution = forms.FloatField()
