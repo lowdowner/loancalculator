@@ -53,6 +53,9 @@ class Index(View):
                 tax_rate = float(sales_tax['combinedrate'])
                 tax_amount = int(int(total_result) * (tax_rate/100))
                 
+                credit_score_apr = float(form.cleaned_data['credit_score'])
+
+                credit_score_apr_perc = credit_score_apr*100
 
                 #sales_tax_amount = [int(form.cleaned_data['starting_amount']) * sales_tax for sales_tax in sales_tax] 
 
@@ -65,7 +68,7 @@ class Index(View):
 
                 #monthly_repay = int((form.cleaned_data['starting_amount'] / (int(form.cleaned_data['number_of_years'])*12)) + (form.cleaned_data['starting_amount'] / (int(form.cleaned_data['number_of_years'])*12) * 0.07))
 
-                monthly_repay = int((((int(form.cleaned_data['starting_amount']) - form.cleaned_data['deposit_amount'] - form.cleaned_data['trade_in_value'] +tax_amount) * 0.07) / 12) / (1 - (1 + (0.07 / 12))**(- int(form.cleaned_data['number_of_years']*12))))
+                monthly_repay = int((((int(form.cleaned_data['starting_amount']) - form.cleaned_data['deposit_amount'] - form.cleaned_data['trade_in_value'] +tax_amount) * credit_score_apr) / 12) / (1 - (1 + (credit_score_apr / 12))**(- int(form.cleaned_data['number_of_years']*12))))
 
                 total_loan = int(int(form.cleaned_data['starting_amount']) - form.cleaned_data['deposit_amount'] - form.cleaned_data['trade_in_value'] + tax_amount)
 
@@ -106,7 +109,10 @@ class Index(View):
                         'sales_tax': sales_tax,
                         #'sales_tax_perc' : sales_tax_perc,
                         #'sales_tax_amount' :sales_tax_amount
-                        'tax_amount': tax_amount
+                        'tax_amount': tax_amount,
+                        'credit_score': credit_score_apr,
+                        'credit_score_perc': credit_score_apr_perc,
+
                         
                     }
                 return render(request, 'loancalculator/index.html', context2)

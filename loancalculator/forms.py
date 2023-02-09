@@ -93,7 +93,7 @@ STARTING_AMOUNT = (
     (150000, '$150,000'),
 )
 
-
+'''
 CREDIT_SCORE = (
     ('', 'SELECT A VALUE'),
     (15000, 'Super Prime (781-850)'),
@@ -102,6 +102,25 @@ CREDIT_SCORE = (
     (15000, 'Subprime (501-600)'),
     (15000, 'Deep Subprime (300-500)'),
    
+)
+
+
+CREDIT_SCORE = (
+    ('', 'SELECT A VALUE'),
+    (15000, 'Excellent (750+)'),
+    (15000, 'Good (700-749)'),
+    (15000, 'Fair (640-649)'),
+    (15000, 'Needs Work (<600)'),
+)
+'''
+
+CREDIT_SCORE = (
+    ('', 'SELECT A VALUE'),
+    (0.05, 'Excellent (800+)'),
+    (0.06, 'Very Good (740-799)'),
+    (0.1, 'Good (670-739)'),
+    (0.15, 'Fair (580-669)'),
+    (0.24, 'Needs Work (<580)'),
 )
 
 class InvestmentForm(forms.Form):
