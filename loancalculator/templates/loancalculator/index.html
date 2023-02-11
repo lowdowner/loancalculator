@@ -24,6 +24,8 @@
         </div>
 
     </div>
+
+
  <!-- RESULTS TOP -->
     <div class="col-md-4 border bg-white">
         <div class="row justify-content-center">
@@ -33,32 +35,51 @@
     </div>
                 <div class="mt-5">
                     <div class="row justify-content-between">
-                        <div class="col-4 text-left">
+                        <div class="col-6 text-left">
                           Car price
+                          <i class="fas fa-info-circle fa-xs" 
+                          data-bs-toggle="tooltip" 
+                          data-bs-toggle="tooltip" data-bs-html="true" title="The cost of the vehicle">
+                        </i>
                         </div>
                         <div class="col-4 text-left">
                             ${{ starting_amount|floatformat:"g"}}
                         </div>
                       </div>
+                      <br>
                       <div class="row justify-content-between">
-                        <div class="col-4 text-left">
+                        <div class="col-6 text-left">
                           Down payment
+                          <i class="fas fa-info-circle fa-xs" 
+                          data-bs-toggle="tooltip" 
+                          data-bs-toggle="tooltip" data-bs-html="true" title="The mone">
+                        </i>
                         </div>
                         <div class="col-4">
                           -${{ deposit_amount|floatformat:"g" }}
                         </div>
                       </div>
+                      <br>
                       <div class="row justify-content-between">
-                        <div class="col-4 text-left">
+                        <div class="col-6 text-left">
                           Trade-in value
+                          <i class="fas fa-info-circle fa-xs" 
+                          data-bs-toggle="tooltip" 
+                          data-bs-toggle="tooltip" data-bs-html="true" title="This is an estimated APR based on your credit score">
+                        </i>
                         </div>
                         <div class="col-4">
                           -${{ trade_in_value|floatformat:"g" }}
                         </div>
                       </div>
+                      <br>
                       <div class="row justify-content-between">
-                        <div class="col-4 text-left"> 
+                        <div class="col-6 text-left"> 
                           Estimated sales tax ({{ sales_tax.combinedrate }}%)
+                          <i class="fas fa-info-circle fa-xs" 
+                          data-bs-toggle="tooltip" 
+                          data-bs-toggle="tooltip" data-bs-html="true" title="This is an estimated APR based on your credit score">
+                        </i>
                         </div>
                         {% for item in sales_tax %}
                         <div class="col-4">
@@ -71,54 +92,89 @@
                       <br>
                       <!-- RESULTS BOTTOM -->
                       <div class="row justify-content-between">
-                        <div class="col-4 text-left fw-bold">
+                        <div class="col-6 text-left fw-bold">
                           Total loan amount
+                          <i class="fas fa-info-circle fa-xs" 
+                          data-bs-toggle="tooltip" 
+                          data-bs-toggle="tooltip" data-bs-html="true" title="This is an estimated APR based on your credit score">
+                        </i>
                         </div>
                         <div class="col-4">
                           ${{ total_loan|floatformat:"g" }}
                         </div>
                       </div>
+                      <br>
                       <div class="row justify-content-between">
-                        <div class="col-4 text-left fw-bold">
-                            Total interest paid
-                            (over life of loan)
+                        <div class="col-6 text-left fw-bold">
+                            Total interest
+                            <i class="fas fa-info-circle fa-xs" 
+                            data-bs-toggle="tooltip" 
+                            data-bs-toggle="tooltip" data-bs-html="true" title="This is an estimated APR based on your credit score">
+                          </i>
                         </div>
                         <div class="col-4">
                           ${{ total_interest|floatformat:"g" }}
                         </div>
                       </div>
+                      <br>
                       <div class="row justify-content-between">
-                        <div class="col-4 text-left fw-bold">
-                            Total loan & interest paid
+                        <div class="col-6 text-left fw-bold">
+                            Total loan & interest
+                            <i class="fas fa-info-circle fa-xs" 
+                            data-bs-toggle="tooltip" 
+                            data-bs-toggle="tooltip" data-bs-html="true" title="This is an estimated APR based on your credit score">
+                          </i>
                         </div>
                         <div class="col-4">
                           ${{ total_interest_and_loan|floatformat:"g"}}
                         </div>
                       </div>
+                      <br>
                       <div class="row justify-content-between">
-                        <div class="col-4 text-left fw-bold">
+                        <div class="col-6 text-left fw-bold">
                             Monthly payment
+                            <i class="fas fa-info-circle fa-xs" 
+                            data-bs-toggle="tooltip" 
+                            data-bs-toggle="tooltip" data-bs-html="true" title="This is an estimated APR based on your credit score">
+                          </i>
                         </div>
                         <div class="col-4">
                           ${{ monthly_repay|floatformat:"g" }}
                         </div>
                       </div>
+                      <br>
                       <div class="row justify-content-between">
-                        <div class="col-4 text-left fw-bold">
+                        <div class="col-6 text-left fw-bold">
                             Number of Payments
+                            <i class="fas fa-info-circle fa-xs" 
+                            data-bs-toggle="tooltip" 
+                            data-bs-toggle="tooltip" data-bs-html="true" title="This is an estimated APR based on your credit score">
+                          </i>
                         </div>
                         <div class="col-4">
                           {{ number_of_payments|floatformat:"g" }}
                         </div>
                       </div>
+                      <br>
                       <div class="row justify-content-between">
-                        <div class="col-4 text-left fw-bold">
+                        <div class="col-6 text-left fw-bold">
                             APR
+                            
+                            <i class="fas fa-info-circle fa-xs" 
+                            data-bs-toggle="tooltip" 
+                            data-bs-toggle="tooltip" data-bs-html="true" title="This is an estimated APR based on your credit score">
+                          </i>
                         </div>
+                        
                         <div class="col-4">
-                          {{ credit_score_perc }}
+                          {{ credit_score_perc }}%
+                        </div>
                         </div>
                       </div>
+                    
+                    </div>
+
+                    
                       <br>
                     <!--
                     <table class="table">
@@ -148,7 +204,26 @@
       </div>
     </div>  
   </div>
+  <script>
 
+
+    var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+  return new bootstrap.Tooltip(tooltipTriggerEl)
+})
+
+
+
+/*
+var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+var tooltipList = tooltipTriggerList.map(function(tooltipTriggerEl) {
+  return new bootstrap.Tooltip(tooltipTriggerEl, {
+    'customClass': 'custom-tooltip',
+  })
+})
+*/
+
+</script>
 
 
 {% endblock content %}
