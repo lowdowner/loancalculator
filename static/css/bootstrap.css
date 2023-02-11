@@ -5600,7 +5600,7 @@ textarea.form-control-lg {
 .bs-tooltip-top .tooltip-arrow::before, .bs-tooltip-auto[data-popper-placement^=top] .tooltip-arrow::before {
   top: -1px;
   border-width: 0.4rem 0.4rem 0;
-  border-top-color: #000;
+  border-top-color: #2f4fff;
 }
 
 .bs-tooltip-end, .bs-tooltip-auto[data-popper-placement^=right] {
@@ -5651,6 +5651,38 @@ textarea.form-control-lg {
   background-color: #000;
   border-radius: 0.25rem;
 }
+
+/* CUSTOM TOOLTIP */
+
+
+.custom-tooltip {
+  --bs-tooltip-bg: var(--bs-primary);
+}
+
+
+
+
+.tooltip-inner {
+  background-color: #2f4fff;
+  box-shadow: 0px 0px 4px black;
+  opacity: 1 !important;
+}
+.tooltip.bs-tooltip-right .tooltip-arrow::before {
+  border-right-color: #2f4fff !important;
+}
+.tooltip.bs-tooltip-left .tooltip-arrow::before {
+  border-left-color: #2f4fff !important;
+}
+.tooltip.bs-tooltip-bottom .tooltip-arrow::before {
+  border-bottom-color: #2f4fff !important;
+}
+.tooltip.bs-tooltip-top .tooltip-arrow::before {
+  border-top-color: #2f4fff !important;
+}
+
+/* END CUSTOM TOOLTIP */
+
+
 
 .popover {
   position: absolute;
