@@ -56,7 +56,7 @@ body {
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
-/* Custome Curved */
+/* CUSTOM - CURVED HEADER IMAGE */
 
 
 .curved {
@@ -2176,6 +2176,11 @@ progress {
 }
 .form-label {
   margin-bottom: 0.5rem;
+}
+
+/* CUSTOM - REMOVE REQUIRED FIELD ASTERISK */
+.asteriskField {
+  display: none;
 }
 
 .col-form-label {
@@ -5652,7 +5657,7 @@ textarea.form-control-lg {
   border-radius: 0.25rem;
 }
 
-/* CUSTOM TOOLTIP */
+/* CUSTOM - TOOLTIP */
 
 
 .custom-tooltip {
@@ -10921,3 +10926,4 @@ textarea.form-control-lg {
 }
 
 /*# sourceMappingURL=bootstrap.css.map */
+
