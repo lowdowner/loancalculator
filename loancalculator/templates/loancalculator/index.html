@@ -10,7 +10,7 @@
     <div class="col-md-4 border bg-light">
 
         <div class="row justify-content-center">
-            <h1 class="text-center"> Car Finance Calculator</h1>
+            <!-- <h1 class="text-center"> Car Finance Calculator</h1> -->
                 <h5 class="text-center"> Enter details below to see your estimate</h5>
                 </div>
                 <div class="col-md-8 mx-auto">
@@ -39,7 +39,7 @@
                           Car price
                           <i class="fas fa-info-circle fa-xs" 
                           data-bs-toggle="tooltip" 
-                          data-bs-toggle="tooltip" data-bs-html="true" title="The cost of the vehicle">
+                          data-bs-toggle="tooltip" data-bs-html="true" title="The cost of the new vehicle">
                         </i>
                         </div>
                         <div class="col-4 text-left">
@@ -52,7 +52,7 @@
                           Down payment
                           <i class="fas fa-info-circle fa-xs" 
                           data-bs-toggle="tooltip" 
-                          data-bs-toggle="tooltip" data-bs-html="true" title="The mone">
+                          data-bs-toggle="tooltip" data-bs-html="true" title="Deposit for new vehicle">
                         </i>
                         </div>
                         <div class="col-4">
@@ -65,7 +65,7 @@
                           Trade-in value
                           <i class="fas fa-info-circle fa-xs" 
                           data-bs-toggle="tooltip" 
-                          data-bs-toggle="tooltip" data-bs-html="true" title="This is an estimated APR based on your credit score">
+                          data-bs-toggle="tooltip" data-bs-html="true" title="Value of trade-in vehicle">
                         </i>
                         </div>
                         <div class="col-4">
@@ -78,7 +78,7 @@
                           Estimated sales tax ({{ sales_tax.combinedrate }}%)
                           <i class="fas fa-info-circle fa-xs" 
                           data-bs-toggle="tooltip" 
-                          data-bs-toggle="tooltip" data-bs-html="true" title="This is an estimated APR based on your credit score">
+                          data-bs-toggle="tooltip" data-bs-html="true" title="Estimated state sales tax">
                         </i>
                         </div>
                         {% for item in sales_tax %}
@@ -96,7 +96,7 @@
                           Total loan amount
                           <i class="fas fa-info-circle fa-xs" 
                           data-bs-toggle="tooltip" 
-                          data-bs-toggle="tooltip" data-bs-html="true" title="This is an estimated APR based on your credit score">
+                          data-bs-toggle="tooltip" data-bs-html="true" title="Total amount to borrow">
                         </i>
                         </div>
                         <div class="col-4">
@@ -109,7 +109,7 @@
                             Total interest
                             <i class="fas fa-info-circle fa-xs" 
                             data-bs-toggle="tooltip" 
-                            data-bs-toggle="tooltip" data-bs-html="true" title="This is an estimated APR based on your credit score">
+                            data-bs-toggle="tooltip" data-bs-html="true" title="Total interest during loan">
                           </i>
                         </div>
                         <div class="col-4">
@@ -122,7 +122,7 @@
                             Total loan & interest
                             <i class="fas fa-info-circle fa-xs" 
                             data-bs-toggle="tooltip" 
-                            data-bs-toggle="tooltip" data-bs-html="true" title="This is an estimated APR based on your credit score">
+                            data-bs-toggle="tooltip" data-bs-html="true" title="Combined loan and interest">
                           </i>
                         </div>
                         <div class="col-4">
@@ -135,7 +135,7 @@
                             Monthly payment
                             <i class="fas fa-info-circle fa-xs" 
                             data-bs-toggle="tooltip" 
-                            data-bs-toggle="tooltip" data-bs-html="true" title="This is an estimated APR based on your credit score">
+                            data-bs-toggle="tooltip" data-bs-html="true" title="Amount to pay per month">
                           </i>
                         </div>
                         <div class="col-4">
@@ -148,7 +148,7 @@
                             Number of Payments
                             <i class="fas fa-info-circle fa-xs" 
                             data-bs-toggle="tooltip" 
-                            data-bs-toggle="tooltip" data-bs-html="true" title="This is an estimated APR based on your credit score">
+                            data-bs-toggle="tooltip" data-bs-html="true" title="Number of payments during loan">
                           </i>
                         </div>
                         <div class="col-4">
@@ -162,7 +162,7 @@
                             
                             <i class="fas fa-info-circle fa-xs" 
                             data-bs-toggle="tooltip" 
-                            data-bs-toggle="tooltip" data-bs-html="true" title="This is an estimated APR based on your credit score">
+                            data-bs-toggle="tooltip" data-bs-html="true" title="Estimated APR based on your credit score">
                           </i>
                         </div>
                         
@@ -204,6 +204,54 @@
       </div>
     </div>  
   </div>
+
+  <br>
+      <h2> Car Finance FAQs</h2>
+    <div class="row t-5">
+        <div class="col-12 col-md-10 mx-md-auto">
+    <div class="accordion accordion-flush" id="accordionFlushExample">
+        <div class="accordion-item" style="width:100%>
+          <h2 class="accordion-header" id="headingOne">
+            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+              Accordion Item #1
+            </button>
+          </h2>
+          <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+            <div class="accordion-body">
+              <strong>This is the first item's accordion body.</strong> It is shown by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+            </div>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="headingTwo">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+              Accordion Item #2
+            </button>
+          </h2>
+          <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+            <div class="accordion-body">
+              <strong>This is the second item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+            </div>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="headingThree">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+              Accordion Item #3
+            </button>
+          </h2>
+          <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+            <div class="accordion-body">
+              <strong>This is the third item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+
+</body>
+<br>
   <script>
 
 
