@@ -3,7 +3,7 @@ from .models import StateTax
 
 STATES = (
     ('', 'Choose...'),
-    ('AL','Alabama'),
+('AL','Alabama'),
 ('AK','Alaska'),
 ('AZ','Arizona'),
 ('AR','Arkansas'),
@@ -125,18 +125,19 @@ CREDIT_SCORE = (
 
 class InvestmentForm(forms.Form):
     #starting_amount = forms.FloatField()
-    starting_amount = forms.ChoiceField(choices=STARTING_AMOUNT)
-    deposit_amount = forms.FloatField()
-    trade_in_value = forms.FloatField()
-    number_of_years = forms.FloatField()
-    credit_score = forms.ChoiceField(choices=CREDIT_SCORE)
+    starting_amount = forms.ChoiceField(choices=STARTING_AMOUNT, widget=forms.Select(attrs={'class': 'form-select', 'id': 'my-dropdown', 'aria-label': 'Floating label select example'}))
+    deposit_amount = forms.FloatField(widget=forms.TextInput(attrs={'class': 'form-control form-floating', 'id': 'my-text-input', 'aria-label': 'Floating label input example', 'placeholder': 'Enter some text'}))
+    trade_in_value = forms.FloatField(widget=forms.TextInput(attrs={'class': 'form-control form-floating', 'id': 'my-text-input', 'aria-label': 'Floating label input example', 'placeholder': 'Enter some text'}))
+    number_of_years = forms.FloatField(widget=forms.TextInput(attrs={'class': 'form-control form-floating', 'id': 'my-text-input', 'aria-label': 'Floating label input example', 'placeholder': 'Enter some text'}))
+    credit_score = forms.ChoiceField(choices=CREDIT_SCORE, widget=forms.Select(attrs={'class': 'form-select', 'id': 'my-dropdown', 'aria-label': 'Floating label select example'}))
     #state = forms.ChoiceField(choices=STATES)
     #state = forms.ModelChoiceField(queryset=StateTax.zipcode(), empty_label=None)
     #state = forms.ChoiceField(queryset=StateTax.objects.values_list('zipcode', flat=True).distinct())
     state = forms.ChoiceField(
         label='State',
-        choices=[(zipcode, zipcode) for zipcode in StateTax.objects.values_list('zipcode', flat=True).distinct()]
-    )
+        choices=[(zipcode, zipcode) for zipcode in StateTax.objects.values_list('zipcode', flat=True).distinct()],
+        widget=forms.Select(attrs={'class': 'form-select', 'id': 'my-dropdown', 'aria-label': 'Floating label select example'}))
+    
 
 
 
