@@ -16,7 +16,36 @@
                 <div class="col-md-8 mx-auto">
             <form action="" method="POST">
                 {% csrf_token %}
-                {{ form|crispy }}
+                <div class="form-floating mb-3">
+                  {{form.starting_amount}}
+                  <label for="{{ form.starting_amount.id_for_label }}">Amount to Borrow</label>
+                </div>
+ 
+                <div class="form-floating mb-3">
+                  {{form.deposit_amount}}
+                  <label for="{{ form.deposit_amount.id_for_label }}">Deposit Amount</label>
+                </div>
+                 
+                <div class="form-floating mb-3">
+                  {{form.trade_in_value }}
+                  <label for="{{ form.trade_in_value.id_for_label }}">Trade-in Value</label>
+                </div>
+
+                <div class="form-floating mb-3">
+                  {{form.number_of_years }}
+                  <label for="{{ form.number_of_years.id_for_label }}">Duration of Loan</label>
+                </div>
+
+                <div class="form-floating mb-3">
+                  {{form.credit_score }}
+                  <label for="{{ form.credit_score.id_for_label }}">Credit Score</label>
+                </div>
+
+                <div class="form-floating mb-3">
+                  {{form.state }}
+                  <label for="{{ form.state.id_for_label }}">Your State</label>
+                </div>
+              
                 <br>
                 <button class="btn btn-primary" type="submit">Calculate</button>                
             </form>
@@ -204,6 +233,8 @@
       </div>
     </div>  
   </div>
+
+
 
   <br>
       <h2> Car Finance FAQs</h2>
