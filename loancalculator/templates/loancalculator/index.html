@@ -5,14 +5,19 @@
 
 
 <div class="container">
-<div class="row justify-content-center" style="margin-top: -100px;">
-    
-    <div class="col-md-4 border bg-light">
 
+
+
+<div class="row justify-content-center" style="margin-top: -100px;">
+ 
+    
+    <div class="col-md-4 border rounded bg-light">
+        
         <div class="row justify-content-center">
             <!-- <h1 class="text-center"> Car Finance Calculator</h1> -->
-                <h5 class="text-center"> Enter details below to see your estimate</h5>
+                <h5 class="text-center"> Enter details for your estimate</h5>
                 </div>
+                <br>
                 <div class="col-md-8 mx-auto">
             <form action="" method="POST">
                 {% csrf_token %}
@@ -55,11 +60,14 @@
     </div>
 
 
+
  <!-- RESULTS TOP -->
-    <div class="col-md-4 border bg-white">
+    <div class="col-md-4 border rounded bg-white">
         <div class="row justify-content-center">
                 <h3 class="text-center">Your estimated payment</h3>
-                <h2> ${{ monthly_repay }} over {{ number_of_months }} months</h2>
+                <h2 class="text-center">${{ monthly_repay }}/mo</h2>
+                <p class="text-center" style="font-size: 11px;">Based on {{ credit_score_perc }}% APR*</p>
+                
                 <!-- <h3> After {{ number_of_years }} years, your investment is worth ${{ total_result }}</h3>-->
     </div>
                 <div class="mt-5">
