@@ -1,3 +1,6 @@
+
+
+
 {% extends 'loancalculator/base.html' %}
 {% load crispy_forms_tags %}
 
@@ -5,312 +8,285 @@
 
 
 <div class="container">
+  <div class="row justify-content-center" style="margin-top: -100px;">
 
-
-
-<div class="row justify-content-center" style="margin-top: -100px;">
- 
-    
-    <div class="col-md-4 border rounded bg-light">
-        
+     <!-- CALC LEFT -->
+     <div class="col-md-4 mb-4 mb-md-0">
+     <div class="border rounded bg-light h-100">
         <div class="row justify-content-center">
-            <!-- <h1 class="text-center"> Car Finance Calculator</h1> -->
-                <h5 class="text-center"> Enter details for your estimate</h5>
-                </div>
-                <br>
-                <div class="col-md-8 mx-auto">
-            <form action="" method="POST">
-                {% csrf_token %}
-                <div class="form-floating mb-3">
-                  {{form.starting_amount}}
-                  <label for="{{ form.starting_amount.id_for_label }}">Amount to Borrow</label>
-                </div>
- 
-                <div class="form-floating mb-3">
-                  {{form.deposit_amount}}
-                  <label for="{{ form.deposit_amount.id_for_label }}">Deposit Amount</label>
-                </div>
-                 
-                <div class="form-floating mb-3">
-                  {{form.trade_in_value }}
-                  <label for="{{ form.trade_in_value.id_for_label }}">Trade-in Value</label>
-                </div>
 
-                <div class="form-floating mb-3">
-                  {{form.number_of_years }}
-                  <label for="{{ form.number_of_years.id_for_label }}">Duration of Loan</label>
-                </div>
-
-                <div class="form-floating mb-3">
-                  {{form.credit_score }}
-                  <label for="{{ form.credit_score.id_for_label }}">Credit Score</label>
-                </div>
-
-                <div class="form-floating mb-3">
-                  {{form.state }}
-                  <label for="{{ form.state.id_for_label }}">Your State</label>
-                </div>
-              
-                <br>
-                <button class="btn btn-primary" type="submit">Calculate</button>                
-            </form>
-            <br>
+           <!-- <h1 class="text-center"> Car Finance Calculator</h1> -->
+           <h5 class="text-center"> Enter details for your estimate</h5>
         </div>
+        <br>
+        <div class="col-sm-10  mx-auto">
+           <form action="" method="POST">
+              {% csrf_token %}
+              <div class="form-floating mb-3">
+                 {{form.starting_amount}}
+                 <label for="{{ form.starting_amount.id_for_label }}">Amount to Borrow</label>
+              </div>
+              <div class="form-floating mb-3">
+                 {{form.deposit_amount}}
+                 <label for="{{ form.deposit_amount.id_for_label }}">Deposit Amount</label>
+              </div>
+              <div class="form-floating mb-3">
+                 {{form.trade_in_value }}
+                 <label for="{{ form.trade_in_value.id_for_label }}">Trade-in Value</label>
+              </div>
+              <div class="form-floating mb-3">
+                 {{form.number_of_years }}
+                 <label for="{{ form.number_of_years.id_for_label }}">Duration of Loan</label>
+              </div>
+              <div class="form-floating mb-3">
+                 {{form.credit_score }}
+                 <label for="{{ form.credit_score.id_for_label }}">Credit Score</label>
+              </div>
+              <div class="form-floating mb-3">
+                 {{form.state }}
+                 <label for="{{ form.state.id_for_label }}">Your State</label>
+              </div>
+              <br>
+              <button class="btn btn-primary" type="submit">Calculate</button>                
+           </form>
+           <br>
+        </div>
+     </div>
+     </div>
 
-    </div>
-
-
-
- <!-- RESULTS TOP -->
-    <div class="col-md-4 border rounded bg-white">
+     <!-- CALC RIGHT -->
+     <!-- RESULTS TOP -->
+     <div class="col-md-4">
+     <div class="border rounded bg-white h-100">
         <div class="row justify-content-center">
-                <h3 class="text-center">Your estimated payment</h3>
-                <h2 class="text-center">${{ monthly_repay }}/mo</h2>
-                <p class="text-center" style="font-size: 11px;">Based on {{ credit_score_perc }}% APR*</p>
-                
-                <!-- <h3> After {{ number_of_years }} years, your investment is worth ${{ total_result }}</h3>-->
-    </div>
-                <div class="mt-5">
-                    <div class="row justify-content-between">
-                        <div class="col-6 text-left">
-                          Car price
-                          <i class="fas fa-info-circle fa-xs" 
-                          data-bs-toggle="tooltip" 
-                          data-bs-toggle="tooltip" data-bs-html="true" title="The cost of the new vehicle">
-                        </i>
-                        </div>
-                        <div class="col-4 text-left">
-                            ${{ starting_amount|floatformat:"g"}}
-                        </div>
-                      </div>
-                      <br>
-                      <div class="row justify-content-between">
-                        <div class="col-6 text-left">
-                          Down payment
-                          <i class="fas fa-info-circle fa-xs" 
-                          data-bs-toggle="tooltip" 
-                          data-bs-toggle="tooltip" data-bs-html="true" title="Deposit for new vehicle">
-                        </i>
-                        </div>
-                        <div class="col-4">
-                          -${{ deposit_amount|floatformat:"g" }}
-                        </div>
-                      </div>
-                      <br>
-                      <div class="row justify-content-between">
-                        <div class="col-6 text-left">
-                          Trade-in value
-                          <i class="fas fa-info-circle fa-xs" 
-                          data-bs-toggle="tooltip" 
-                          data-bs-toggle="tooltip" data-bs-html="true" title="Value of trade-in vehicle">
-                        </i>
-                        </div>
-                        <div class="col-4">
-                          -${{ trade_in_value|floatformat:"g" }}
-                        </div>
-                      </div>
-                      <br>
-                      <div class="row justify-content-between">
-                        <div class="col-6 text-left"> 
-                          Estimated sales tax ({{ sales_tax.combinedrate }}%)
-                          <i class="fas fa-info-circle fa-xs" 
-                          data-bs-toggle="tooltip" 
-                          data-bs-toggle="tooltip" data-bs-html="true" title="Estimated state sales tax">
-                        </i>
-                        </div>
-                        {% for item in sales_tax %}
-                        <div class="col-4">
-                         +${{ tax_amount|floatformat:"g" }} 
-                        </div>
-                        {% endfor %}
-                      </div>
-                      <br>
-                      <div class="position-relative w-100 top-50 start-0 border-muted border-top"></div>
-                      <br>
-                      <!-- RESULTS BOTTOM -->
-                      <div class="row justify-content-between">
-                        <div class="col-6 text-left fw-bold">
-                          Total loan amount
-                          <i class="fas fa-info-circle fa-xs" 
-                          data-bs-toggle="tooltip" 
-                          data-bs-toggle="tooltip" data-bs-html="true" title="Total amount to borrow">
-                        </i>
-                        </div>
-                        <div class="col-4">
-                          ${{ total_loan|floatformat:"g" }}
-                        </div>
-                      </div>
-                      <br>
-                      <div class="row justify-content-between">
-                        <div class="col-6 text-left fw-bold">
-                            Total interest
-                            <i class="fas fa-info-circle fa-xs" 
-                            data-bs-toggle="tooltip" 
-                            data-bs-toggle="tooltip" data-bs-html="true" title="Total interest during loan">
-                          </i>
-                        </div>
-                        <div class="col-4">
-                          ${{ total_interest|floatformat:"g" }}
-                        </div>
-                      </div>
-                      <br>
-                      <div class="row justify-content-between">
-                        <div class="col-6 text-left fw-bold">
-                            Total loan & interest
-                            <i class="fas fa-info-circle fa-xs" 
-                            data-bs-toggle="tooltip" 
-                            data-bs-toggle="tooltip" data-bs-html="true" title="Combined loan and interest">
-                          </i>
-                        </div>
-                        <div class="col-4">
-                          ${{ total_interest_and_loan|floatformat:"g"}}
-                        </div>
-                      </div>
-                      <br>
-                      <div class="row justify-content-between">
-                        <div class="col-6 text-left fw-bold">
-                            Monthly payment
-                            <i class="fas fa-info-circle fa-xs" 
-                            data-bs-toggle="tooltip" 
-                            data-bs-toggle="tooltip" data-bs-html="true" title="Amount to pay per month">
-                          </i>
-                        </div>
-                        <div class="col-4">
-                          ${{ monthly_repay|floatformat:"g" }}
-                        </div>
-                      </div>
-                      <br>
-                      <div class="row justify-content-between">
-                        <div class="col-6 text-left fw-bold">
-                            Number of Payments
-                            <i class="fas fa-info-circle fa-xs" 
-                            data-bs-toggle="tooltip" 
-                            data-bs-toggle="tooltip" data-bs-html="true" title="Number of payments during loan">
-                          </i>
-                        </div>
-                        <div class="col-4">
-                          {{ number_of_payments|floatformat:"g" }}
-                        </div>
-                      </div>
-                      <br>
-                      <div class="row justify-content-between">
-                        <div class="col-6 text-left fw-bold">
-                            APR
-                            
-                            <i class="fas fa-info-circle fa-xs" 
-                            data-bs-toggle="tooltip" 
-                            data-bs-toggle="tooltip" data-bs-html="true" title="Estimated APR based on your credit score">
-                          </i>
-                        </div>
-                        
-                        <div class="col-4">
-                          {{ credit_score_perc }}%
-                        </div>
-                        </div>
-                      </div>
-                    
-                    </div>
-
-                    
-                      <br>
-                    <!--
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th scope="col">Year</th>
-                                <th scope="col">Interest</th>
-                                <th scope="col">Total</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            -->
-    
-                            <!-- {% for key, value in yearly_results.items %} 
-    
-                            <tr>
-                                <th scope="row">{{ key }}</th>
-                                <td>{{ value.interest }}</td>
-                                <td>{{ value.total }}</td>
-                            </tr>
-                             {% endfor %} -->
-
-                    
-                </div>
-            </div>
-
-      </div>
-    </div>  
+           <h3 class="text-center">Your estimated payment</h3>
+           <h2 class="text-center">${{ monthly_repay }}/mo</h2>
+           <p class="text-center" style="font-size: 11px;">Based on {{ credit_score_perc }}% APR*</p>
+           <!-- <h3> After {{ number_of_years }} years, your investment is worth ${{ total_result }}</h3>-->
+        </div>
+        <div class="col-md-10 mx-auto">
+           <div class="row justify-content-between">
+              <div class="col-6 text-left">
+                 Car price
+                 <i class="fas fa-info-circle fa-xs" 
+                    data-bs-toggle="tooltip" 
+                    data-bs-toggle="tooltip" data-bs-html="true" title="The cost of the new vehicle">
+                 </i>
+              </div>
+              <div class="col-4 text-left">
+                 ${{ starting_amount|floatformat:"g"}}
+              </div>
+           </div>
+           <br>
+           <div class="row justify-content-between">
+              <div class="col-6 text-left">
+                 Down payment
+                 <i class="fas fa-info-circle fa-xs" 
+                    data-bs-toggle="tooltip" 
+                    data-bs-toggle="tooltip" data-bs-html="true" title="Deposit for new vehicle">
+                 </i>
+              </div>
+              <div class="col-4">
+                 -${{ deposit_amount|floatformat:"g" }}
+              </div>
+           </div>
+           <br>
+           <div class="row justify-content-between">
+              <div class="col-6 text-left">
+                 Trade-in value
+                 <i class="fas fa-info-circle fa-xs" 
+                    data-bs-toggle="tooltip" 
+                    data-bs-toggle="tooltip" data-bs-html="true" title="Value of trade-in vehicle">
+                 </i>
+              </div>
+              <div class="col-4">
+                 -${{ trade_in_value|floatformat:"g" }}
+              </div>
+           </div>
+           <br>
+           <div class="row justify-content-between">
+              <div class="col-6 text-left"> 
+                  Sales tax ({{ sales_tax.combinedrate }}%)
+                 <i class="fas fa-info-circle fa-xs" 
+                    data-bs-toggle="tooltip" 
+                    data-bs-toggle="tooltip" data-bs-html="true" title="Estimated state sales tax">
+                 </i>
+              </div>
+              {% for item in sales_tax %}
+              <div class="col-4">
+                 +${{ tax_amount|floatformat:"g" }} 
+              </div>
+              {% endfor %}
+           </div>
+           <br>
+           <div class="position-relative w-100 top-50 start-0 border-muted border-top"></div>
+           <br>
+           <!-- RESULTS BOTTOM -->
+           <div class="row justify-content-between">
+              <div class="col-6 text-left fw-bold">
+                 Total loan amount
+                 <i class="fas fa-info-circle fa-xs" 
+                    data-bs-toggle="tooltip" 
+                    data-bs-toggle="tooltip" data-bs-html="true" title="Total amount to borrow">
+                 </i>
+              </div>
+              <div class="col-4">
+                 ${{ total_loan|floatformat:"g" }}
+              </div>
+           </div>
+           <br>
+           <div class="row justify-content-between">
+              <div class="col-6 text-left fw-bold">
+                 Total interest
+                 <i class="fas fa-info-circle fa-xs" 
+                    data-bs-toggle="tooltip" 
+                    data-bs-toggle="tooltip" data-bs-html="true" title="Total interest during loan">
+                 </i>
+              </div>
+              <div class="col-4">
+                 ${{ total_interest|floatformat:"g" }}
+              </div>
+           </div>
+           <br>
+           <div class="row justify-content-between">
+              <div class="col-6 text-left fw-bold">
+                 Total loan & interest
+                 <i class="fas fa-info-circle fa-xs" 
+                    data-bs-toggle="tooltip" 
+                    data-bs-toggle="tooltip" data-bs-html="true" title="Combined loan and interest">
+                 </i>
+              </div>
+              <div class="col-4">
+                 ${{ total_interest_and_loan|floatformat:"g"}}
+              </div>
+           </div>
+           <br>
+           <div class="row justify-content-between">
+              <div class="col-6 text-left fw-bold">
+                 Monthly payment
+                 <i class="fas fa-info-circle fa-xs" 
+                    data-bs-toggle="tooltip" 
+                    data-bs-toggle="tooltip" data-bs-html="true" title="Amount to pay per month">
+                 </i>
+              </div>
+              <div class="col-4">
+                 ${{ monthly_repay|floatformat:"g" }}
+              </div>
+           </div>
+           <br>
+           <div class="row justify-content-between">
+              <div class="col-6 text-left fw-bold">
+                 No. of Payments
+                 <i class="fas fa-info-circle fa-xs" 
+                    data-bs-toggle="tooltip" 
+                    data-bs-toggle="tooltip" data-bs-html="true" title="Number of payments during loan">
+                 </i>
+              </div>
+              <div class="col-4">
+                 {{ number_of_payments|floatformat:"g" }}
+              </div>
+           </div>
+           <br>
+           <div class="row justify-content-between">
+              <div class="col-6 text-left fw-bold">
+                 APR
+                 <i class="fas fa-info-circle fa-xs" 
+                    data-bs-toggle="tooltip" 
+                    data-bs-toggle="tooltip" data-bs-html="true" title="Estimated APR based on your credit score">
+                 </i>
+              </div>
+              <div class="col-4">
+                 {{ credit_score_perc }}%
+              </div>
+           </div>
+        </div>
+     </div>
+     </div>
+     <br>
+     <!--
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Year</th>
+                    <th scope="col">Interest</th>
+                    <th scope="col">Total</th>
+                </tr>
+            </thead>
+            <tbody>
+                -->
+     <!-- {% for key, value in yearly_results.items %} 
+        <tr>
+            <th scope="row">{{ key }}</th>
+            <td>{{ value.interest }}</td>
+            <td>{{ value.total }}</td>
+        </tr>
+         {% endfor %} -->
   </div>
-
-
-
-  <br>
-      <h2> Car Finance FAQs</h2>
-    <div class="row t-5">
-        <div class="col-12 col-md-10 mx-md-auto">
-    <div class="accordion accordion-flush" id="accordionFlushExample">
-        <div class="accordion-item" style="width:100%>
-          <h2 class="accordion-header" id="headingOne">
-            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-              Accordion Item #1
-            </button>
-          </h2>
-          <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-            <div class="accordion-body">
-              <strong>This is the first item's accordion body.</strong> It is shown by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
-            </div>
-          </div>
-        </div>
-        <div class="accordion-item">
-          <h2 class="accordion-header" id="headingTwo">
-            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-              Accordion Item #2
-            </button>
-          </h2>
-          <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
-            <div class="accordion-body">
-              <strong>This is the second item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
-            </div>
-          </div>
-        </div>
-        <div class="accordion-item">
-          <h2 class="accordion-header" id="headingThree">
-            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-              Accordion Item #3
-            </button>
-          </h2>
-          <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
-            <div class="accordion-body">
-              <strong>This is the third item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
 </div>
 
+<br>
+<h2> Car Finance FAQs</h2>
+<div class="row t-5">
+  <div class="col-12 col-md-10 mx-md-auto">
+     <div class="accordion accordion-flush" id="accordionFlushExample">
+        <div class="accordion-item" style="width:100%>
+           <h2 class="accordion-header" id="headingOne">
+           <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+           Accordion Item #1
+           </button>
+           </h2>
+           <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+              <div class="accordion-body">
+                 <strong>This is the first item's accordion body.</strong> It is shown by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+              </div>
+           </div>
+        </div>
+        <div class="accordion-item">
+           <h2 class="accordion-header" id="headingTwo">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+              Accordion Item #2
+              </button>
+           </h2>
+           <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+              <div class="accordion-body">
+                 <strong>This is the second item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+              </div>
+           </div>
+        </div>
+        <div class="accordion-item">
+           <h2 class="accordion-header" id="headingThree">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+              Accordion Item #3
+              </button>
+           </h2>
+           <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+              <div class="accordion-body">
+                 <strong>This is the third item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+              </div>
+           </div>
+        </div>
+     </div>
+  </div>
+</div>
 </body>
 <br>
-  <script>
-
-
-    var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
-var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+<script>
+  var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+  var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
   return new bootstrap.Tooltip(tooltipTriggerEl)
-})
-
-
-
-/*
-var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
-var tooltipList = tooltipTriggerList.map(function(tooltipTriggerEl) {
-  return new bootstrap.Tooltip(tooltipTriggerEl, {
-    'customClass': 'custom-tooltip',
   })
-})
-*/
-
+  
+  
+  
+  /*
+  var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+  var tooltipList = tooltipTriggerList.map(function(tooltipTriggerEl) {
+  return new bootstrap.Tooltip(tooltipTriggerEl, {
+  'customClass': 'custom-tooltip',
+  })
+  })
+  */
+  
 </script>
-
-
 {% endblock content %}
+
