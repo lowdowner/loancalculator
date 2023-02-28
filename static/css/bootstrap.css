@@ -2415,6 +2415,20 @@ textarea.form-control-lg {
     transition: none;
   }
 }
+/* CUSTOM RESPONSIVE LABEL WIDTH */
+@media (max-width: 575px) {
+  .form-floating > .form-control,
+  .form-floating > .form-select {
+    display: block;
+    width: 85%;
+    padding: 0.375rem 0.75rem;
+    margin: 0 auto;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+}
+
 .form-select:focus {
   border-color: #86b7fe;
   outline: 0;
@@ -2660,6 +2674,8 @@ textarea.form-control-lg {
   transform-origin: 0 0;
   transition: opacity 0.1s ease-in-out, transform 0.1s ease-in-out;
 }
+
+
 @media (prefers-reduced-motion: reduce) {
   .form-floating > label {
     transition: none;
@@ -10923,6 +10939,15 @@ textarea.form-control-lg {
   .d-print-none {
     display: none !important;
   }
+
+/* CUSTOM @MEDIA */
+@media (min-width: 575px) {
+.form-floating > .form-control, .form-floating > .form-select {
+    height: calc(3.5rem + 2px);
+    line-height: 1.25;
+}
+
+
 }
 
 /*# sourceMappingURL=bootstrap.css.map */
