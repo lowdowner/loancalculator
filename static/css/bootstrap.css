@@ -2415,7 +2415,8 @@ textarea.form-control-lg {
     transition: none;
   }
 }
-/* CUSTOM RESPONSIVE LABEL WIDTH */
+
+/* CUSTOM RESPONSIVE INPUT FIELD WIDTH */
 @media (max-width: 575px) {
   .form-floating > .form-control,
   .form-floating > .form-select {
@@ -2427,7 +2428,15 @@ textarea.form-control-lg {
     -moz-box-sizing: border-box;
     box-sizing: border-box;
   }
+  .form-floating > label {
+    position: absolute;
+    top: 0.5rem;
+    left: 0.75rem;
+    padding: 1rem 3.2rem!important;
+    transition: opacity 0.1s ease-in-out, transform 0.1s ease-in-out;
+  }
 }
+
 
 .form-select:focus {
   border-color: #86b7fe;
@@ -2673,6 +2682,7 @@ textarea.form-control-lg {
   border: 1px solid transparent;
   transform-origin: 0 0;
   transition: opacity 0.1s ease-in-out, transform 0.1s ease-in-out;
+  
 }
 
 
@@ -2681,6 +2691,7 @@ textarea.form-control-lg {
     transition: none;
   }
 }
+
 .form-floating > .form-control {
   padding: 1rem 0.75rem;
 }
@@ -10940,14 +10951,8 @@ textarea.form-control-lg {
     display: none !important;
   }
 
-/* CUSTOM @MEDIA */
-@media (min-width: 575px) {
-.form-floating > .form-control, .form-floating > .form-select {
-    height: calc(3.5rem + 2px);
-    line-height: 1.25;
-}
 
-
+  
 }
 
 /*# sourceMappingURL=bootstrap.css.map */
