@@ -94,6 +94,7 @@ headerimg {
   z-index:-999;
 }
 
+
 .curved h1 {
   font-size: 6rem;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -4023,6 +4024,7 @@ textarea.form-control-lg {
   justify-content: space-between;
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
+  z-index: 9999;
 }
 .navbar > .container,
 .navbar > .container-fluid,
@@ -10956,4 +10958,3 @@ textarea.form-control-lg {
 }
 
 /*# sourceMappingURL=bootstrap.css.map */
-
